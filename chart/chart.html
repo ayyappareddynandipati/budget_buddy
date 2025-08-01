@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Charts - Budget Buddy</title>
+    <!-- Load Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Link CSS -->
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="chart.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo">Budget <span>Buddy</span></div>
+        <nav>
+            <ul>
+                <li><a href="../index.html#transactions-main">Transactions</a></li>
+                <li><a href="chart.html">Charts</a></li>
+                <li><a href="../index.html#dashboard">Dashboard</a></li>
+                <li><a href="../index.html#budgeting">Budgeting</a></li>
+            </ul>
+        </nav>
+        <div class="menu-toggle">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+    </header>
+
+    <!-- Charts Section -->
+    <section class="charts-container">
+        <h1>Spending Insights</h1>
+        <div class="charts-grid">
+            <!-- Monthly Expenses Bar Chart -->
+            <div class="chart-card">
+                <h2>Monthly Expenses</h2>
+                <canvas id="monthlyExpensesChart"></canvas>
+            </div>
+
+            <!-- Category-Wise Spending Pie Chart -->
+            <div class="chart-card">
+                <h2>Category-Wise Spending</h2>
+                <canvas id="categoryChart"></canvas>
+            </div>
+
+            <!-- Budget vs Actual Comparison Chart -->
+            <div class="chart-card">
+                <h2>Budget vs Actual</h2>
+                <canvas id="budgetVsActualChart"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="chart.js"></script>
+</body>
+
+</html>

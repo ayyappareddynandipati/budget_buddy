@@ -1,0 +1,273 @@
+/* 🔥 Budget Container 🔥 */
+.budget-container {
+    padding: 20px;
+    background: linear-gradient(135deg, rgba(20, 20, 50, 0.9), rgba(5, 5, 20, 0.9));
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin-top: 80px;
+}
+
+.budget-container h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    font-family: 'Orbitron', sans-serif;
+    background: linear-gradient(45deg, #4763EDFF, #00d4ff, #FEFEFEFF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* 🔥 Budget Grid 🔥 */
+.budget-grid {
+    display: flex;
+    gap: 20px;
+    max-width: 1200px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0px 4px 30px rgba(0, 255, 255, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    animation: fadeIn 1s ease-in-out;
+    overflow: hidden;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 🔥 Left Column 🔥 */
+.left-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* 🔥 Right Column 🔥 */
+.right-column {
+    flex: 2; /* Make Spending Insights wider */
+}
+
+/* 🔥 Budget Card 🔥 */
+.budget-card {
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 12px;
+    animation: slideInLeft 1s ease-in-out;
+    overflow: hidden;
+}
+
+.budget-card h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    font-family: 'Orbitron', sans-serif;
+    background: linear-gradient(45deg, #4763EDFF, #00d4ff, #FEFEFEFF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* 🔥 Budget Form 🔥 */
+#budget-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#budget-form select,
+#budget-form input {
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+#budget-form select:focus,
+#budget-form input:focus {
+    border-color: #00d4ff;
+    box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+}
+
+#budget-form button {
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(45deg, #00d4ff, #4763EDFF);
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#budget-form button:hover {
+    background: linear-gradient(45deg, #4763EDFF, #00d4ff);
+    transform: scale(1.02);
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.8);
+}
+
+/* 🔥 Budget List Table 🔥 */
+#budget-list {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+#budget-list th,
+#budget-list td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+#budget-list th {
+    background: rgba(0, 0, 0, 0.9);
+    color: #00d4ff;
+    font-weight: 700;
+}
+
+#budget-list td {
+    color: white;
+}
+
+#budget-list td button {
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: none;
+    background: linear-gradient(45deg, #ff4e50, #fc913a);
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#budget-list td button:hover {
+    background: linear-gradient(45deg, #fc913a, #ff4e50);
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255, 78, 80, 0.8);
+}
+
+/* 🔥 Spending Insights 🔥 */
+#spending-insights {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.insight {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 12px;
+    animation: slideInRight 1s ease-in-out;
+    overflow: hidden;
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.budget-details {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* 🔥 Progress Bar 🔥 */
+.progress-bar {
+    width: 100%;
+    height: 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 10px 0;
+}
+
+.progress-bar .progress {
+    height: 100%;
+    background: linear-gradient(45deg, #00d4ff, #4763EDFF);
+    transition: width 0.3s ease;
+}
+
+/* 🔥 Status Colors 🔥 */
+.within-budget {
+    color: #00ff00;
+    font-weight: bold;
+}
+
+.close-to-limit {
+    color: #ffa500;
+    font-weight: bold;
+}
+
+.over-budget {
+    color: #ff0000;
+    font-weight: bold;
+}
+
+/* 🔥 Responsive Design 🔥 */
+@media (max-width: 768px) {
+    .budget-grid {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .left-column,
+    .right-column {
+        flex: 1 1 auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .budget-container h1 {
+        font-size: 2rem;
+    }
+
+    .budget-card h2 {
+        font-size: 1.5rem;
+    }
+
+    input, select, button {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    th, td {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 385px) {
+    .budget-container {
+        margin-top: 130px;
+    }
+}

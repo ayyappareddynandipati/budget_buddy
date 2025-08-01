@@ -1,0 +1,202 @@
+/* 🔥 DASHBOARD SECTION 🔥 */
+.dashboard-container {
+    margin-top: 20px; /* Adjusted for fixed header */
+    margin-bottom:50px;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, rgba(20, 20, 50, 0.95), rgba(5, 5, 20, 0.95));
+    color: white;
+    border-radius: 20px;
+    box-shadow: 0px 8px 40px rgba(0, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px);
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 🔥 DASHBOARD HEADINGS STYLE 🔥 */
+.dashboard-container h1,
+.dashboard-card h2 {
+    text-align: center;
+    font-size: 2rem; /* Default size */
+    margin-bottom: 20px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    font-family: 'Orbitron', sans-serif;
+    background: linear-gradient(45deg, #4763EDFF, #00d4ff, #FEFEFEFF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 0.5s ease-in-out;
+}
+
+/* Adjust font size for h1 (main dashboard title) */
+.dashboard-container h1 {
+    font-size: 2.5rem; /* Larger for the main title */
+}
+
+/* Adjust font size for h2 (card titles) */
+.dashboard-card h2 {
+    font-size: 1.8rem; /* Slightly smaller for card titles */
+}
+
+/* 🔥 DASHBOARD GRID LAYOUT 🔥 */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+/* 🔥 DASHBOARD CARD DESIGN 🔥 */
+.dashboard-card {
+    background: rgba(40, 40, 63, 0.8); /* Slightly transparent */
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0px 4px 20px rgba(0, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dashboard-card:hover {
+    /* transform: translateY(-5px); */
+    box-shadow: 0px 8px 30px rgba(0, 255, 255, 0.3);
+}
+
+/* 🔥 TOTAL EXPENSES CARD (RECTANGULAR DESIGN) 🔥 */
+.total-expenses {
+    grid-column: span 1;
+    text-align: center;
+    background: linear-gradient(135deg, rgba(40, 40, 63, 0.9), rgba(20, 20, 50, 0.9));
+    border-radius: 20px; /* Rounded corners */
+    padding: 20px;
+    width: 100%; /* Full width of the grid column */
+    height: auto; /* Height adjusts to content */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 4px 20px rgba(0, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.total-expenses:hover {
+    /* transform: translateY(-5px); Lift effect on hover */
+    box-shadow: 0px 8px 30px rgba(0, 255, 255, 0.3);
+}
+
+.total-expenses h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    font-family: 'Orbitron', sans-serif;
+    background: linear-gradient(45deg, #4763EDFF, #00d4ff, #FEFEFEFF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    /* text-shadow: 0 0 10px rgba(0, 212, 255, 0.8), 0 0 20px rgba(0, 212, 255, 0.6); */
+}
+
+.total-expenses p {
+    font-size: 2rem;
+    font-weight: bold;
+    color: white; /* White text */
+    text-shadow: 0 0 10px rgba(0, 212, 255, 0.8), 0 0 20px rgba(0, 212, 255, 0.6);
+    margin: 0;
+}
+
+/* 🔥 RECENT TRANSACTIONS CARD 🔥 */
+.recent-transactions {
+    grid-column: span 1;
+    background: linear-gradient(135deg, rgba(40, 40, 63, 0.9), rgba(20, 20, 50, 0.9));
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.recent-transactions ul {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+}
+
+.recent-transactions li {
+    padding: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 1.1rem;
+    color: white;
+    transition: background 0.3s ease;
+}
+
+.recent-transactions li:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+}
+
+.recent-transactions li:last-child {
+    border-bottom: none;
+}
+
+/* 🔥 CATEGORY BREAKDOWN CARD 🔥 */
+.category-breakdown {
+    grid-column: span 2; /* Takes 2 columns for larger screens */
+    text-align: center;
+    background: linear-gradient(135deg, rgba(40, 40, 63, 0.9), rgba(20, 20, 50, 0.9));
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.category-breakdown canvas {
+    width: 100% !important;
+    height: 300px !important;
+}
+
+/* 🔥 RESPONSIVE DESIGN 🔥 */
+@media (max-width: 768px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .category-breakdown {
+        grid-column: span 1;
+    }
+
+    .dashboard-container h1 {
+        font-size: 2rem;
+    }
+
+    .dashboard-card h2 {
+        font-size: 1.5rem;
+    }
+
+    .total-expenses p {
+        font-size: 1.8rem;
+    }
+
+    .recent-transactions li {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .dashboard-container {
+        padding: 20px 10px;
+    }
+
+    .dashboard-container h1 {
+        font-size: 1.8rem;
+    }
+
+    .dashboard-card h2 {
+        font-size: 1.3rem;
+    }
+
+    .total-expenses p {
+        font-size: 1.5rem;
+    }
+}

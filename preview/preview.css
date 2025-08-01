@@ -1,0 +1,142 @@
+/* Body with particle effect */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #0a0a0a; /* Solid black background */
+    color: white;
+    overflow: hidden; /* Prevent scrolling */
+    position: relative;
+}
+
+/* Particle effect for the body */
+.particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: #00d4ff; /* Cyan color */
+    border-radius: 50%;
+    animation: float 5s infinite ease-in-out;
+    opacity: 0.7;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0) translateX(0);
+        opacity: 0.7;
+    }
+    50% {
+        transform: translateY(-20px) translateX(20px);
+        opacity: 0.3;
+    }
+    100% {
+        transform: translateY(0) translateX(0);
+        opacity: 0.7;
+    }
+}
+
+/* The base style for letter blocks */
+.letter-block {
+    width: 20px;
+    height: 20px;
+    background-color: #00d4ff; /* Cyan color */
+    opacity: 0;
+    transform: scale(0);
+    animation: buildLetter 0.5s ease-in-out forwards;
+    position: relative;
+    border-radius: 50%; /* Make it circular */
+    box-shadow: 0 0 10px #00d4ff, 0 0 20px #00d4ff; /* Glow effect */
+}
+
+@keyframes buildLetter {
+    from {
+        opacity: 0;
+        transform: scale(0);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Keep words on separate lines */
+.word-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Keep each word on the same line */
+.word {
+    display: flex;
+    gap: 17px;
+}
+
+/* Adjust size for smaller screens */
+@media (max-width: 768px) {
+    .letter-block {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .letter-block {
+        width: 10px;
+        height: 12px;
+    }
+    .word {
+        display: flex;
+        gap: 15px;
+    }
+}
+/* Add this to your preview.css */
+#particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.particle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background-color: #00bcd4;
+    border-radius: 50%;
+    animation: float 5s infinite linear;
+}
+
+@keyframes float {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-100vh);
+        opacity: 0;
+    }
+}
+
+.word-container {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+}
+
+.word {
+    display: flex;
+    margin: 5px;
+}
+
+.letter-block {
+    width: 15px;
+    height: 15px;
+    background-color: #333;
+    margin: 1px;
+}

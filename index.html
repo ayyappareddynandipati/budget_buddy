@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget Buddy</title>
+
+    <!-- Load Chart.js first -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+    <!-- Link CSS -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="transactions/transactions.css">
+    <link rel="stylesheet" href="dashboard/dashboard.css">
+    <link rel="stylesheet" href="budgeting/budgeting.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <script>
+        // Check if the user has already seen the preview
+        if (!sessionStorage.getItem("hasSeenPreview")) {
+            // Set the flag and redirect to preview.html
+            sessionStorage.setItem("hasSeenPreview", "true");
+            window.location.href = "./preview/preview.html";
+        }
+    </script>
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo">Budget <span>Buddy</span></div>
+        <nav>
+            <ul>
+                <li><a href="#transactions-main">Transactions</a></li>
+                <li><a href="chart/chart.html">Charts</a></li>
+                <!-- Updated link to charts page -->
+                <li><a href="#dashboard">Dashboard</a></li>
+                <li><a href="#budgeting">Budgeting</a></li>
+            </ul>
+        </nav>
+        <div class="menu-toggle">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+    </header>
+
+    <!-- Transactions Section -->
+    <main class="transactions-main" id="transactions-main">
+        <div class="transactions-container">
+            <!-- Left Column: Form -->
+            <div class="form-container">
+                <h1>Add Transaction</h1>
+                <form id="transaction-form">
+                    <input type="text" id="description" placeholder="Description" required>
+                    <input type="number" id="amount" placeholder="Amount" required>
+                    <input type="date" id="date" required>
+                    <select id="category">
+                        <option value="">Select Category</option>
+                        <option value="Food">Food</option>
+                        <option value="Transport">Transport</option>
+                        <option value="Entertainment">Entertainment</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <button type="submit">Add Transaction</button>
+                </form>
+            </div>
+
+            <!-- Right Column: Table -->
+            <div class="table-container">
+                <h1>Transaction History</h1>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Description</th>
+                                <th>Amount</th>
+                                <th>Date</th>
+                                <th>Category</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="transaction-list"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Dashboard Section -->
+    <section id="dashboard" class="dashboard-container">
+        <h1>Dashboard</h1>
+        <div class="dashboard-grid">
+            <!-- Total Expenses Card -->
+            <div class="dashboard-card total-expenses">
+                <h2>Total Expenses</h2>
+                <p id="total-expenses">$0</p>
+            </div>
+
+            <!-- Recent Transactions Card -->
+            <div class="dashboard-card recent-transactions">
+                <h2>Recent Transactions</h2>
+                <ul id="recent-transactions"></ul>
+            </div>
+
+            <!-- Category Breakdown Card -->
+            <div class="dashboard-card category-breakdown">
+                <h2>Category Breakdown</h2>
+                <canvas id="categoryChart"></canvas>
+                <!-- Pie Chart for Category Breakdown -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Budgeting Section -->
+    <section id="budgeting" class="budget-container">
+        <h1>Budgeting</h1>
+        <div class="budget-grid">
+            <!-- Left Column: Set Monthly Budget and Budget Overview -->
+            <div class="left-column">
+                <!-- Set Monthly Budget -->
+                <div class="budget-card">
+                    <h2>Set Monthly Budget</h2>
+                    <form id="budget-form">
+                        <!-- Month Dropdown -->
+                        <select id="budget-month" required>
+                            <option value="">Select Month</option>
+                            <option value="January">January</option>
+                            <option value="February">February</option>
+                            <option value="March">March</option>
+                            <option value="April">April</option>
+                            <option value="May">May</option>
+                            <option value="June">June</option>
+                            <option value="July">July</option>
+                            <option value="August">August</option>
+                            <option value="September">September</option>
+                            <option value="October">October</option>
+                            <option value="November">November</option>
+                            <option value="December">December</option>
+                        </select>
+
+                        <!-- Category Dropdown -->
+                        <select id="budget-category" required>
+                            <option value="">Select Category</option>
+                            <option value="Food">Food</option>
+                            <option value="Transport">Transport</option>
+                            <option value="Entertainment">Entertainment</option>
+                            <option value="Other">Other</option>
+                        </select>
+
+                        <!-- Amount Input -->
+                        <input type="number" id="budget-amount" placeholder="Amount" required>
+
+                        <!-- Submit Button -->
+                        <button type="submit">Set Budget</button>
+                    </form>
+                </div>
+
+                <!-- Budget Overview -->
+                <div class="budget-card">
+                    <h2>Budget Overview</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Month</th>
+                                <th>Category</th>
+                                <th>Amount</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="budget-list"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Right Column: Spending Insights -->
+            <div class="right-column">
+                <div class="budget-card">
+                    <h2>Spending Insights</h2>
+                    <div id="spending-insights"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+    <div class="footer-content">
+      <p>👨‍💻 Developed with <span class="blinking-heart">❤️</span> by 
+        <strong><a href="https://ayyappareddy.vercel.app/" target="_blank">Ayyappa Reddy Nandipati</a></strong>
+      </p>
+        <p>© <span id="year"></span> Budget Buddy. All rights reserved.</p>
+    </div>
+  </footer>
+
+    <!-- Scripts -->
+     <script>  document.getElementById("year").textContent = new Date().getFullYear();</script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="./preview/preview.js"></script>
+    <script src="./transactions/transactions.js"></script>
+    <script src="./dashboard/dashboard.js"></script>
+    <script src="./budgeting/budgeting.js"></script>
+
+
+</body>
+
+</html>
